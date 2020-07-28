@@ -16,3 +16,6 @@
 示例：
 
 `python hide_webshell_pro.py 'system("echo \"hacked by Tr0y :)\"");' normal_pro.php`
+
+## 其他
+[![Stargazers over time](https://starchart.cc/Macr0phag3/webshell-bypassed-human.svg)](https://starchart.cc/Macr0phag3/webshell-bypassed-human)
