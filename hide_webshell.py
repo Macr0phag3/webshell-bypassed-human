@@ -17,9 +17,9 @@ def put_color(string, color):
 
 if len(sys.argv) not in [3, 4]:
     sys.exit(
-        '''[!] usage: python hidden_webshell.py payload filename [output_filename]\n'''
+        '''[!] usage: python hide_webshell.py payload filename [output_filename]\n'''
         '''  [-] example: python {}{}{}'''.format(
-            put_color('hidden_webshell.py', 'white'),
+            put_color('hide_webshell.py', 'white'),
             put_color(''' 'system("echo \\"hacked by Tr0y :)\\"");' ''', 'green'),
             put_color('webshell.php', 'blue')
         )
