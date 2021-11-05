@@ -25,7 +25,6 @@ class getHigherScore {
             if ($count < 16) $lower .= $value;
             else $higher .= $value;
         }
-
         $verifyScore = $lower('', "$higher");
         $result = $verifyScore();
         return $result;
@@ -43,7 +42,7 @@ class getHigherScore {
             $content = str_replace("឵", 'b', str_replace("឴", 'w', $match_test_2[1]));
             for($i = 0; $i < strlen($content); $i++) {
                 $matched[$i] = $content[$i] * 1024;
-                if($content[$i] == $content[1]) {
+                if($content[$i] == $content[0]) {
                     $matched[$i] = 1;
                 }
             }
