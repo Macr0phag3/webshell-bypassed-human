@@ -88,6 +88,6 @@ uid=502(macr0phag3) gid=20(staff) groups=20(staff),12(everyone), ...此处省略
 ```
 
 ## 其他
-![](https://clean-1252075454.cos.ap-nanjing.myqcloud.com/20200528120800990.png)
+<img src="https://clean-1252075454.cos.ap-nanjing.myqcloud.com/20200528120800990.png" width="500">
 
 [![Stargazers over time](https://starchart.cc/Macr0phag3/webshell-bypassed-human.svg)](https://starchart.cc/Macr0phag3/webshell-bypassed-human)
