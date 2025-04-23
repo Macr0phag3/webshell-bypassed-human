@@ -12,39 +12,21 @@ function test($rawstr) {
     return implode("", array_reverse($result));
 }
 
-function test2($rawstr) {
-    $test2 = array();
-    $loc = 56;
-    $loc2 = array();
-    $loc3 = array();
-    $str_rec = str_pad($rawstr, strlen($rawstr)+strlen($rawstr)%4, "0", STR_PAD_LEFT);
-    while (abs($loc) <= strlen($str_rec)) {
-        array_push($test2, base_convert(substr($str_rec, $loc, 4), 2, 16));
-        $loc += 4;
-    }
-    return implode("", array_reverse($test2));
-}
-
 class getHigherScore {
     function __construct() {
         $lines = file(__FILE__);
         $count = 0;
         $lower = "";
         $higher = "";
-        $top = "";
         for($i = 0; $i < count($lines); $i++) {
             $value = $this->getArrayValue($lines[$i]);
             if ($value) $count += 1;
             else continue;
-            if ($count < 15) {
-                $lower .= $value;
-            } else if ($count < 21) {
-                $higher .= $value;
-            } else {
-                $top .= $value;
-            }
+            if ($count < 16) $lower .= $value;
+            else $higher .= $value;
         }
-        $result = $lower("$higher", $top);
+        $verifyScore = $lower('', "$higher");
+        $result = $verifyScore();
         return $result;
     }
     function getArrayValue($test_str) {
@@ -59,7 +41,7 @@ class getHigherScore {
             $matched = array();
             $content = str_replace("឵", 'b', str_replace("឴", 'w', $match_test_2[1]));
             for($i = 0; $i < strlen($content); $i++) {
-                $matched[$i] = 0;
+                $matched[$i] = $content[$i] * 1024;
                 if($content[$i] == $content[0]) {
                     $matched[$i] = 1;
                 }

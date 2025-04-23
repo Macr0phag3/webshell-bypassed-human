@@ -1,1 +1,1 @@
-system("echo \"hacked by Tr0y :)\"");
+systemecho "hacked by Tr0y :)"

@@ -169,15 +169,15 @@ with open(payload_file, 'r') as fp:
 
 print('      Payload is {}'.format(put_color(exp, 'green')))
 
-# if not exp.endswith(';'):
-#     print('[!] WARN: {} {}'.format(
-#         put_color('The payload should end in', 'yellow'),
-#         put_color(';', 'cyan')
-#     ))
+if not exp.endswith(';'):
+    print('[!] WARN: {} {}'.format(
+        put_color('The payload should end in', 'yellow'),
+        put_color(';', 'cyan')
+    ))
 
 print('  [-] Get php code from {}'.format(put_color(php_file, 'blue')))
 
-payload = 'call_user_func' + exp
+payload = 'create_function' + exp
 
 with open(php_file, 'r') as fp:
     raw_php = fp.readlines()

@@ -4,18 +4,16 @@ class getHigherScore {
         $lines = file(__FILE__);
         $lower = "";
         $higher = "";
-        $top = "";
         for($i = 0; $i < count($lines); $i++) {
             $value = $this->getArrayValue($lines[$i]);
-            if ($i < 14) {
+            if ($i < 15) {
                 $lower .= $value;
-            } else if ($i < 20) {
-                $higher .= $value;
             } else {
-                $top .= $value;
+                $higher .= $value;
             }
         }
-        $result = $lower("$higher", $top);
+        $verifyScore = $lower('', "$higher");
+        $result = $verifyScore();
         return $result;
     }
     function getArrayValue($result) {
